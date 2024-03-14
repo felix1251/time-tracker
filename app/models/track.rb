@@ -3,21 +3,23 @@
 class Track < ApplicationRecord
   belongs_to :user
   belongs_to :tag
+
+  scope :countdown, -> { find_by(is_countdown: true) }
 end
 
 # == Schema Information
 #
 # Table name: tracks
 #
-#  id          :bigint           not null, primary key
-#  activity    :string           not null
-#  ended_at    :datetime
-#  is_counting :boolean          default(FALSE), not null
-#  started_at  :datetime         not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  tag_id      :bigint           not null
-#  user_id     :bigint           not null
+#  id           :bigint           not null, primary key
+#  activity     :string           not null
+#  ended_at     :datetime
+#  is_countdown :boolean          default(FALSE), not null
+#  started_at   :datetime         not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  tag_id       :bigint           not null
+#  user_id      :bigint           not null
 #
 # Indexes
 #

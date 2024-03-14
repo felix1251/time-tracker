@@ -1,17 +1,19 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "users/shared/links"
+.margin-max-screen.grid.place-items-center.h-full.py-20
+  .flex.flex-col.gap-3.w-96
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "border p-8 rounded" }) do |f|
+      .grid{class: "gap-2.5"}
+        %h2.font-semibold.text-2xl.mb-2 Login
+        .field
+          = f.label :email
+          = f.email_field :email, required: true, autocomplete: "email"
+        .field
+          = f.label :password
+          = f.password_field :password, required: true, autocomplete: "current-password"
+        - if devise_mapping.rememberable?
+          .flex.gap-2.items-center
+            = f.check_box :remember_me, class: "mt-0.5"
+            = f.label :remember_me
+        = f.submit "Log in", class: "btn-primary w-full"
+        = render "users/shared/sign_up", message: "Doesn't have an account?"
+    .flex.justify-center
+      = render "users/shared/forgot_password"

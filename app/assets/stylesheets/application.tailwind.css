@@ -2,12 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+@layer base {
+  html,
+  body {
+    @apply h-full;
+  }
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  .margin-max-screen {
+    @apply mx-auto max-w-margin px-4 md:px-8 w-full;
   }
 }
 
-*/
+@layer components {
+  .btn-primary {
+    @apply bg-primary py-2.5 px-6 rounded text-white w-fit hover:shadow-md transition-all ease-in-out duration-100;
+  }
+
+  .btn-plain {
+    @apply border border-secondary bg-white py-2.5 px-6 rounded w-fit hover:shadow-md transition-all ease-in-out duration-100 text-sm;
+  }
+
+  .input-primary {
+    @apply px-3 w-full rounded ring-1 ring-secondary/50 border-secondary border-0 focus:border-0 focus:ring-2 focus:ring-primary disabled:cursor-not-allowed;
+  }
+
+  .input-error {
+    @apply px-3 w-full rounded ring-1 ring-red-600 border-secondary border-0  focus:border-0 focus:ring-2 focus:ring-red-600 disabled:cursor-not-allowed;
+  }
+
+  /* form */
+  .field {
+    @apply flex flex-col gap-1 w-full
+  }
+
+  .field .field_with_errors label {
+    @apply text-red-600;
+  }
+
+  .field input, textarea, select {
+    @apply input-primary;
+  }
+
+  .field .field_with_errors input {
+    @apply input-error;
+  }
+
+  .field .field_with_errors textarea {
+    @apply input-error;
+  }
+
+  .field .field_with_errors select {
+    @apply input-error;
+  }
+
+  .field:has(input[required]) label:after {
+    @apply content-['*'] text-red-600
+  }
+
+  .field:has(textarea[required]) label:after {
+    @apply content-['*'] text-red-600
+  }
+
+  .field:has(select[required]) label:after {
+    @apply content-['*'] text-red-600
+  }
+}

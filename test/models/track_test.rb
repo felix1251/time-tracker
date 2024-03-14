@@ -23,8 +23,10 @@ end
 #
 # Indexes
 #
-#  index_tracks_on_tag_id   (tag_id)
-#  index_tracks_on_user_id  (user_id)
+#  index_tracks_on_ended_at    (ended_at)
+#  index_tracks_on_started_at  (started_at)
+#  index_tracks_on_tag_id      (tag_id)
+#  index_tracks_on_user_id     (user_id)
 #
 # Foreign Keys
 #

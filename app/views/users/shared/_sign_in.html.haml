@@ -1,0 +1,4 @@
+- if controller_name != 'sessions'
+  %span
+    = message
+    = link_to "Sign in", new_session_path(resource_name), class: "text-primary"

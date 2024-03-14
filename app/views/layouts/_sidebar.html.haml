@@ -1,8 +1,10 @@
 .h-screen.w-64.grid.content-between.relative.sticky.border-r.border-r-gray-200.bg-white.border-l-2.border-primary
-  = link_to root_path, class: "text-2xl font-bold py-3 mt-1 px-4 text-primary" do
-    = icon "fa-solid", "clock"
-    Time Tracker
-  .flex.flex-col.mt-3
+  .flex.flex-col
+    = link_to root_path, class: "text-2xl font-bold py-3 px-4 text-primary" do
+      = icon "fa-solid", "clock"
+      Time Tracker
+    .flex.flex-col.mt-2
+      felix
   .py-4.px-4.grid.gap-2.sticky.bottom-0.bg-white.z-10
     %span.truncate.flex.items-center.gap-2
       = icon "fa-solid", "user"

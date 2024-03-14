@@ -1,9 +1,9 @@
-.h-screen.w-64.grid.content-between.sticky.border-r.border-r-gray-200.bg-white.border-l-2.border-primary
+.h-screen.w-64.grid.content-between.relative.sticky.border-r.border-r-gray-200.bg-white.border-l-2.border-primary
   = link_to root_path, class: "text-2xl font-bold py-3 mt-1 px-4 text-primary" do
     = icon "fa-solid", "clock"
     Time Tracker
   .flex.flex-col.mt-3
-  .py-4.px-4.grid.gap-3
+  .py-4.px-4.grid.gap-3.sticky.bottom-0.bg-white.z-10
     %span.truncate.flex.gap-2.items-center
       = icon "fa-solid", "user"
       = current_user.email

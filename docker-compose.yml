@@ -3,7 +3,7 @@ name: time-tracker
 services:
   db:
     image: "postgres:15.3-bookworm"
-    container_name: fjc_pg_db
+    container_name: time_tracker_pg_db
     ports:
       - "5432:5432"
     environment:

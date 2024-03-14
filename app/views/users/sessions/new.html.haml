@@ -4,7 +4,7 @@
       = render "users/shared/logo"
     = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "border p-8 rounded bg-white" }) do |f|
       .grid{class: "gap-2.5"}
-        %h2.font-semibold.text-2xl.mb-2 Login
+        %h2.font-semibold.text-xl.mb-2 Login
         .field
           = f.label :email
           = f.email_field :email, required: true, autocomplete: "email"

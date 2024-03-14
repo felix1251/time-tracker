@@ -5,9 +5,9 @@ services:
     build:
       context: .
       dockerfile: ${DOCKERFILE}
-    container_name: wholesale_container
+    container_name: time_tracker_container
     ports:
-      - "${DB_PORT}:3000"
+      - "3000:3000"
     env_file:
       - .env
     depends_on:

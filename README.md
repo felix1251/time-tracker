@@ -1,24 +1,46 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup Dev Environment
 
-Things you may want to cover:
+Copy ENV
 
-* Ruby version
+```
+cp .env.example .env
+```
 
-* System dependencies
+### Dockerize
 
-* Configuration
+Build
 
-* Database creation
+```
+docker compose -f docker-compose.dev.yml build
+```
 
-* Database initialization
+Initialize
 
-* How to run the test suite
+```
+docker compose -f docker-compose.dev.yml up -d
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+> We control all the commands inside our time_tracker_container.
+> All logic or changes will reflect in our project directory because volume are shared between our container
 
-* Deployment instructions
+```
+docker exec -it time_tracker_container bash
+```
 
-* ...
+> After successful docker container execution we can now run rails commands on it
+
+Execution (Example Only)
+
+```bash
+root@a122740347d3:/app# rails console
+Loading development environment (Rails 7.0.8.1)
+irb(main):001> User.all
+```
+
+### HTML to HAML
+
+```
+HAML_RAILS_DELETE_ERB=true rails haml:erb2haml
+```

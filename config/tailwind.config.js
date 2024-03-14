@@ -18,7 +18,7 @@ module.exports = {
         secondary: "#363738",
       },
       maxWidth: {
-        margin: "1280px",
+        margin: "1820px",
       },
     },
   },

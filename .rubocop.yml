@@ -70,3 +70,6 @@ Rails/BulkChangeTable:
 Style/WordArray:
   Exclude:
     - "db/schema.rb"
+
+Rails/I18nLocaleTexts:
+  Enabled: false

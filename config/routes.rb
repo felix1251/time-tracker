@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  # root "articles#index"
+  root "home#index"
 end
 
 # == Route Map
@@ -24,6 +23,7 @@ end
 #                                          PUT    /users(.:format)                                                                                  devise/registrations#update
 #                                          DELETE /users(.:format)                                                                                  devise/registrations#destroy
 #                                          POST   /users(.:format)                                                                                  devise/registrations#create
+#                                     root GET    /                                                                                                 home#index
 #         turbo_recede_historical_location GET    /recede_historical_location(.:format)                                                             turbo/native/navigation#recede
 #         turbo_resume_historical_location GET    /resume_historical_location(.:format)                                                             turbo/native/navigation#resume
 #        turbo_refresh_historical_location GET    /refresh_historical_location(.:format)                                                            turbo/native/navigation#refresh

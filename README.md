@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup Dev Environment
 
-Things you may want to cover:
+Copy ENV
 
-* Ruby version
+```
+cp .env.example .env
+```
 
-* System dependencies
+HTML to HAML
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+HAML_RAILS_DELETE_ERB=true rails haml:erb2haml
+```

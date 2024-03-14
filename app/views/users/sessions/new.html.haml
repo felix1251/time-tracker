@@ -11,7 +11,7 @@
           = f.password_field :password, required: true, autocomplete: "current-password"
         - if devise_mapping.rememberable?
           .flex.gap-2.items-center
-            = f.check_box :remember_me, class: "mt-0.5"
+            = f.check_box :remember_me, class: "text-primary rounded-sm focus:ring-0 mt-0.5"
             = f.label :remember_me
         = f.submit "Log in", class: "btn-primary w-full"
         = render "users/shared/sign_up", message: "Doesn't have an account?"

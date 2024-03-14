@@ -6,7 +6,7 @@ class CreateTracks < ActiveRecord::Migration[7.0]
       t.references :user, null: false, foreign_key: true
       t.references :tag, null: false, foreign_key: true
       t.datetime :started_at, null: false, precision: nil
-      t.datetime :ended_at, null: false, precision: nil
+      t.datetime :ended_at, precision: nil
       t.string :activity, null: false
 
       t.timestamps

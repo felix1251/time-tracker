@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class TrackTimerFormComponent < ViewComponent::Base
-  attr_reader :track_model
+  attr_reader :track
 
-  def initialize(track_model:)
-    @track_model = track_model
+  def initialize(track:)
+    @track = track
     super
   end
 end

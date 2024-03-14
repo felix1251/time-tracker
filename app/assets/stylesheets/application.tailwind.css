@@ -9,7 +9,7 @@
   }
 
   .margin-max-screen {
-    @apply mx-auto max-w-margin px-4 md:px-8 w-full;
+    @apply mx-auto max-w-margin px-5 w-full;
   }
 }
 

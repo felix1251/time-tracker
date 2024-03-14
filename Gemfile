@@ -90,3 +90,6 @@ gem 'devise', '~> 4.9'
 
 # Restrictions
 gem 'cancancan', '~> 3.5'
+
+# Icons
+gem 'font-awesome-sass', '~> 6.4.0'

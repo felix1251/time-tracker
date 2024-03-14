@@ -25,7 +25,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_14_125233) do
   create_table "tracks", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "tag_id", null: false
-    t.string "activity"
+    t.datetime "started_at", null: false
+    t.datetime "ended_at", null: false
+    t.string "activity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tag_id"], name: "index_tracks_on_tag_id"

@@ -10,7 +10,9 @@ end
 # Table name: tracks
 #
 #  id         :bigint           not null, primary key
-#  activity   :string
+#  activity   :string           not null
+#  ended_at   :datetime         not null
+#  started_at :datetime         not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  tag_id     :bigint           not null

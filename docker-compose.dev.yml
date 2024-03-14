@@ -7,7 +7,7 @@ services:
       dockerfile: ${DOCKERFILE}
     container_name: wholesale_container
     ports:
-      - "3000:3000"
+      - "${DB_PORT}:3000"
     env_file:
       - .env
     depends_on:

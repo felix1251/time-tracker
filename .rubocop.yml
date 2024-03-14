@@ -1,0 +1,72 @@
+# Rubocop serves as linter and formatter
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
+Layout/LineLength:
+  Exclude:
+    - "config/**/**"
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 35
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - "Rakefile"
+    - "config.ru"
+    - "config/**/**"
+    - "bin/*"
+
+Style/StringLiterals:
+  Exclude:
+    - "Rakefile"
+    - "config.ru"
+    - "config/**/**"
+    - "bin/*"
+
+Style/NumericLiterals:
+  Exclude:
+    - "db/schema.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "db/schema.rb"
+    - "lib/tasks/*"
+    - config/initializers/devise.rb
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+  Exclude:
+    - "bin/*"
+
+Style/SpecialGlobalVars:
+  Exclude:
+    - "bin/bundle"
+
+Metrics/MethodLength:
+  Max: 40
+  Exclude:
+    - "bin/bundle"
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - "bin/bundle"
+
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+    - "db/schema.rb"
+
+Rails/BulkChangeTable:
+  Enabled: false
+
+Style/WordArray:
+  Exclude:
+    - "db/schema.rb"

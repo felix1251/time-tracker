@@ -73,3 +73,6 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
+# .env Variables
+gem 'dotenv-rails', '~> 2.8'

@@ -3,8 +3,10 @@
     = icon "fa-solid", "clock"
     Time Tracker
   .flex.flex-col.mt-3
-  .py-4.px-4.grid.gap-3.sticky.bottom-0.bg-white.z-10
-    %span.truncate.flex.gap-2.items-center
+  .py-4.px-4.grid.gap-2.sticky.bottom-0.bg-white.z-10
+    %span.truncate.flex.items-center.gap-2
       = icon "fa-solid", "user"
       = current_user.email
-    = button_to "Logout", destroy_user_session_path, method: :delete, class: "btn-plain w-full"
+    = button_to destroy_user_session_path, method: :delete, class: "py-1.5 btn-plain w-full flex items-center gap-2 justify-center" do
+      = icon "fa-solid", "right-from-bracket"
+      Logout

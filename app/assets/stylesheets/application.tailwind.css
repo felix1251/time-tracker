@@ -19,7 +19,7 @@
   }
 
   .btn-plain {
-    @apply border border-secondary bg-white py-2.5 px-6 rounded w-fit hover:shadow-md transition-all ease-in-out duration-100 text-sm;
+    @apply border border-secondary bg-white py-2.5 px-6 rounded w-fit hover:shadow-md transition-all ease-in-out duration-100;
   }
 
   .input-primary {

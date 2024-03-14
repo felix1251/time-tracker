@@ -87,3 +87,6 @@ gem 'html2haml', '~> 2.3'
 
 # Authentication
 gem 'devise', '~> 4.9'
+
+# Restrictions
+gem 'cancancan', '~> 3.5'

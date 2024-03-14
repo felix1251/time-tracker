@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_14_125233) do
     t.datetime "started_at", precision: nil, null: false
     t.datetime "ended_at", precision: nil
     t.string "activity", null: false
-    t.boolean "is_counting", default: false, null: false
+    t.boolean "is_countdown", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ended_at"], name: "index_tracks_on_ended_at"

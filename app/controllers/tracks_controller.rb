@@ -23,27 +23,19 @@ class TracksController < ApplicationController
   def create
     @track = Track.new(track_params)
 
-    respond_to do |format|
-      if @track.save
-        format.html { redirect_to track_url(@track), notice: 'Track was successfully created.' }
-        format.json { render :show, status: :created, location: @track }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @track.errors, status: :unprocessable_entity }
-      end
+    if @track.save
+      redirect_to track_url(@track), notice: 'Track was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /tracks/1 or /tracks/1.json
   def update
-    respond_to do |format|
-      if @track.update(track_params)
-        format.html { redirect_to track_url(@track), notice: 'Track was successfully updated.' }
-        format.json { render :show, status: :ok, location: @track }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @track.errors, status: :unprocessable_entity }
-      end
+    if @track.update(track_params)
+      redirect_to track_url(@track), notice: 'Track was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -51,10 +43,7 @@ class TracksController < ApplicationController
   def destroy
     @track.destroy
 
-    respond_to do |format|
-      format.html { redirect_to tracks_url, notice: 'Track was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to tracks_url, notice: 'Track was successfully destroyed.'
   end
 
   private

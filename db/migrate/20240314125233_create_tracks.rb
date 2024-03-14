@@ -8,6 +8,7 @@ class CreateTracks < ActiveRecord::Migration[7.0]
       t.datetime :started_at, null: false, precision: nil
       t.datetime :ended_at, precision: nil
       t.string :activity, null: false
+      t.boolean :is_countdown, null: false, default: false
 
       t.timestamps
     end

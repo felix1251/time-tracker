@@ -9,7 +9,7 @@
   }
 
   .margin-max-screen {
-    @apply mx-auto max-w-margin px-4 md:px-8 w-full;
+    @apply mx-auto max-w-margin px-5 w-full;
   }
 }
 
@@ -20,6 +20,10 @@
 
   .btn-plain {
     @apply border border-secondary bg-white py-2.5 px-6 rounded w-fit hover:shadow-md transition-all ease-in-out duration-100;
+  }
+
+  .btn-countdown {
+    @apply bg-red-500 py-2.5 px-6 rounded text-white w-fit hover:shadow-md transition-all ease-in-out duration-100;
   }
 
   .input-primary {

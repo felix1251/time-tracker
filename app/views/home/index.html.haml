@@ -2,4 +2,4 @@
   .flex.p-4.bg-white.border.rounded{class: "pb-3.5"}
     - countdown = current_user.tracks.countdown
     - new_track = current_user.tracks.new
-    = render TrackTimerFormComponent.new track_model: countdown.present? ? countdown : new_track
+    = render TrackTimerFormComponent.new track: countdown.present? ? countdown : new_track

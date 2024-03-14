@@ -1,0 +1,31 @@
+version: "3"
+name: time-tracker
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ${DOCKERFILE}
+    container_name: wholesale_container
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    command: bash -c "rm -f tmp/pids/server.pid && bin/rails db:migrate && bin/rails db:seed RAILS_ENV=development && bin/rails s -p 3000 -b '0.0.0.0'"
+  db:
+    image: "postgres:15.3-bookworm"
+    container_name: time_tracker_db_container
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+      POSTGRES_USER: ${DB_USER}
+      DATABASE_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - data:/var/lib/postgresql@15/data
+volumes:
+  data:

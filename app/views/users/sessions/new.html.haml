@@ -1,6 +1,6 @@
 .margin-max-screen.grid.place-items-center.h-full.py-20
   .flex.flex-col.gap-3.w-96
-    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "border p-8 rounded" }) do |f|
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "border p-8 rounded bg-white" }) do |f|
       .grid{class: "gap-2.5"}
         %h2.font-semibold.text-2xl.mb-2 Login
         .field
@@ -11,7 +11,7 @@
           = f.password_field :password, required: true, autocomplete: "current-password"
         - if devise_mapping.rememberable?
           .flex.gap-2.items-center
-            = f.check_box :remember_me, class: "mt-0.5"
+            = f.check_box :remember_me, class: "text-primary rounded-sm focus:ring-0 mt-0.5"
             = f.label :remember_me
         = f.submit "Log in", class: "btn-primary w-full"
         = render "users/shared/sign_up", message: "Doesn't have an account?"

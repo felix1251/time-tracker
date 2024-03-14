@@ -1,0 +1,10 @@
+.h-screen.w-64.grid.content-between.sticky.border-r.bg-white
+  = link_to root_path, class: "text-2xl font-bold py-3 mt-1 px-4 text-primary" do
+    = icon "fa-solid", "clock"
+    Time Tracker
+  .flex.flex-col.mt-3
+  .py-4.px-4.grid.gap-3
+    %span.truncate.flex.gap-2.items-center
+      = icon "fa-solid", "user"
+      = current_user.email
+    = button_to "Logout", destroy_user_session_path, method: :delete, class: "btn-plain w-full"

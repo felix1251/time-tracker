@@ -1,6 +1,6 @@
 .margin-max-screen.grid.place-items-center.h-full.py-20
   .flex.flex-col.gap-6.w-96
-    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "border p-8 rounded" }) do |f|
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "border p-8 rounded bg-white" }) do |f|
       = render "users/shared/error_messages", resource: resource
       .grid{class: "gap-2.5"}
         %h2.font-semibold.text-2xl.mb-2 Sign Up

@@ -16,9 +16,10 @@ module.exports = {
       colors: {
         primary: "#FE4C12",
         secondary: "#363738",
+        main: "#F2F6F8",
       },
       maxWidth: {
-        margin: "1280px",
+        margin: "1820px",
       },
     },
   },

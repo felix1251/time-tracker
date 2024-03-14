@@ -8,6 +8,10 @@ class User < ApplicationRecord
 
   has_many :tags, dependent: :destroy
   has_many :tracks, dependent: :destroy
+
+  def remember_me
+    super.nil? ? true : super
+  end
 end
 
 # == Schema Information

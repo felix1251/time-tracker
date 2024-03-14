@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tracks
   devise_for :users
 
   # Defines the root path route ("/")
@@ -8,6 +9,14 @@ end
 # == Route Map
 #
 #                                   Prefix Verb   URI Pattern                                                                                       Controller#Action
+#                                   tracks GET    /tracks(.:format)                                                                                 tracks#index
+#                                          POST   /tracks(.:format)                                                                                 tracks#create
+#                                new_track GET    /tracks/new(.:format)                                                                             tracks#new
+#                               edit_track GET    /tracks/:id/edit(.:format)                                                                        tracks#edit
+#                                    track GET    /tracks/:id(.:format)                                                                             tracks#show
+#                                          PATCH  /tracks/:id(.:format)                                                                             tracks#update
+#                                          PUT    /tracks/:id(.:format)                                                                             tracks#update
+#                                          DELETE /tracks/:id(.:format)                                                                             tracks#destroy
 #                         new_user_session GET    /users/sign_in(.:format)                                                                          devise/sessions#new
 #                             user_session POST   /users/sign_in(.:format)                                                                          devise/sessions#create
 #                     destroy_user_session DELETE /users/sign_out(.:format)                                                                         devise/sessions#destroy

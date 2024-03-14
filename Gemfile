@@ -30,7 +30,7 @@ gem 'stimulus-rails'
 gem 'tailwindcss-rails'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem 'jbuilder'
+# gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -87,3 +87,6 @@ gem 'html2haml', '~> 2.3'
 
 # Authentication
 gem 'devise', '~> 4.9'
+
+# Restrictions
+gem 'cancancan', '~> 3.5'

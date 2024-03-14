@@ -1,11 +1,12 @@
+- is_new = track.new_record?
 = form_for track, html: { class: "w-full" } do |f|
   .flex.divide-x
     .field.pr-4.w-full
       = f.text_field :activity, placeholder: "What are you working on?", required: true
     .flex.w-fit.items-center
       .field.pl-4.w-60
-        = f.select :tag, [],  { prompt: '-- Select Tag --' }, required: true
+        = f.select :tag, [],  { prompt: "-- Select Tag --" }, required: true
       .span.px-6.text-xl.font-medium.text-secondary
         00:00:00
       = f.hidden_field :is_countdown, value: true
-      = f.submit 'start', class: "uppercase btn-primary text-sm"
+      = f.submit is_new ? 'start' : "stop", class: "#{is_new ? 'btn-primary' : 'btn-countdown'} uppercase text-sm disabled:bg-gray-200 disabled:cursor-progress "

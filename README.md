@@ -31,7 +31,7 @@ docker exec -it time_tracker_container bash
 
 > After successful docker container execution we can now run rails commands on it
 
-Execution (Exmaple Only)
+Execution (Example Only)
 
 ```bash
 root@a122740347d3:/app# rails console

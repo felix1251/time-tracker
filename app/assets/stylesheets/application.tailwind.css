@@ -11,6 +11,10 @@
   .margin-max-screen {
     @apply mx-auto max-w-margin px-5 w-full;
   }
+
+  #notification-container {
+    @apply absolute z-[9999] top-6 right-7;
+  }
 }
 
 @layer components {

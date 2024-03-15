@@ -16,7 +16,7 @@ Build
 docker compose -f docker-compose.dev.yml build
 ```
 
-Initialize
+Spawn containers
 
 ```
 docker compose -f docker-compose.dev.yml up -d
@@ -24,6 +24,8 @@ docker compose -f docker-compose.dev.yml up -d
 
 > We control all the commands inside our time_tracker_container.
 > All logic or changes will reflect in our project directory because volume are shared between our container
+
+Open rails project container
 
 ```
 docker exec -it time_tracker_container bash

@@ -39,6 +39,22 @@ Loading development environment (Rails 7.0.8.1)
 irb(main):001> User.all
 ```
 
+### Test Account
+
+Admin User
+
+```
+email: admin@example.com
+password: test@123
+```
+
+Normal User
+
+```
+email: test@example.com
+password: test@123
+```
+
 ### HTML to HAML
 
 ```

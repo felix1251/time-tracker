@@ -44,14 +44,14 @@ irb(main):001> User.all
 Admin User
 
 ```
-username: admin@example.com
+email: admin@example.com
 password: test@123
 ```
 
 Normal User
 
 ```
-username: test@example.com
+email: test@example.com
 password: test@123
 ```
 

@@ -1,0 +1,7 @@
+#notification-container
+  - if flash[:notice].present?
+    = render NotificationComponent.new message: flash[:notice]
+  - elsif flash[:error].present?
+    = render NotificationComponent.new notif_type: "error", message: flash[:error]
+  - elsif flash[:alert].present?
+    = render NotificationComponent.new notif_type: "warn", message: flash[:alert]

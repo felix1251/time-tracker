@@ -12,6 +12,11 @@ class User < ApplicationRecord
   def remember_me
     super.nil? ? true : super
   end
+
+  # use for grouping tracks
+  def date_started
+    started_at.strftime('%m-%d-%Y')
+  end
 end
 
 # == Schema Information

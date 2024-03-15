@@ -2,6 +2,9 @@
 
 class Tag < ApplicationRecord
   belongs_to :user
+  has_many :tracks, dependent: :destroy
+
+  validates :name, presence: true
 end
 
 # == Schema Information

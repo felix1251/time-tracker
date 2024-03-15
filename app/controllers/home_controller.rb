@@ -4,6 +4,6 @@ class HomeController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tasks = current_user.tracks.complete
+    @tracks = current_user.tracks.order(started_at: :asc).complete
   end
 end

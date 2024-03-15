@@ -1,5 +1,28 @@
+- countdown = Track.find_by(user: current_user, ended_at: nil)
+- user_tags = current_user.tags
+
 .margin-max-screen.py-10.grid.gap-7
-  .flex.p-4.bg-white.border.rounded{class: "pb-3.5"}
-    - countdown = current_user.tracks.countdown
-    - new_track = current_user.tracks.new
-    = render TrackTimerFormComponent.new track: countdown.present? ? countdown : new_track
+  .flex.p-4.bg-white.border.rounded.shadow{class: "pb-3.5"}
+    = render TrackTimerFormComponent.new track: (countdown.present? ? countdown : Track.new), tags: user_tags
+  .flex.flex-col.gap-5
+    - @tasks.map.group_by(&:date_started).map do |group|
+      .flex.flex-col
+        .px-4.py-2.text-primary.flex.justify-between{class: "bg-primary/10" }
+          %div=group[0]
+          %div.flex.gap-1.items-center
+            %span.text-zinc-500 total:
+            %span.text-xl.font-medium.text-secondary 00:00:00
+        - group[1].each do |track|
+          = form_for track, html: { class: "divide-y shadow w-full" } do |f|
+            .flex.gap-4.w-full.bg-white.divide-gray-800.items-center{class: "px-4 p-2.5"}
+              .field.w-full
+                = f.text_field :activity, required: true, class: "w-full"
+              .field.w-80
+                = f.select :tag_id, options_for_select(user_tags.map{|tag| [tag.name, tag.id]})
+              .field.w-60
+                = f.time_field :started_at, value: f.object.started_at.strftime("%H:%M"), required: true
+              .field.w-60
+                = f.time_field :ended_at, value: f.object.ended_at.strftime("%H:%M"), required: true
+              .px-3.text-xl.font-medium.text-secondary.text-nowrap.w-40.text-center
+                - diff = time_diff(track.started_at, track.ended_at)
+                = "#{format('%02d', diff[:hour].to_i)}:#{format('%02d', diff[:mins].to_i)}:#{format('%02d', diff[:seconds].to_i)}"

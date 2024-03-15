@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TracksController < ApplicationController
-  before_action :set_track, only: %i[show edit update destroy]
+  before_action :set_track, only: %i[show edit update destroy stop_countdown]
 
   # GET /tracks or /tracks.json
   def index
@@ -21,12 +21,36 @@ class TracksController < ApplicationController
 
   # POST /tracks or /tracks.json
   def create
-    @track = Track.new(track_params)
+    @track = current_user.tracks.new(sanitize_track_params)
 
-    if @track.save
-      redirect_to track_url(@track), notice: 'Track was successfully created.'
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @track.save
+        format.html { redirect_to track_url(@track), notice: 'Track was successfully created.' }
+        format.turbo_stream do
+          is_countdown = @track.ended_at.blank?
+          message = is_countdown ? 'Successfully stopped' : 'Successfully created'
+          render :success, locals: { track: @track, message: }
+        end
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream do
+          render :error, locals: { message: @track.errors.full_messages.first }
+        end
+      end
+    end
+  end
+
+  def stop_countdown
+    respond_to do |format|
+      if @track.update(ended_at: Time.zone.now)
+        format.turbo_stream do
+          render :success, locals: { track: Track.new, message: 'Successfully stopped' }
+        end
+      else
+        format.turbo_stream do
+          render :error, locals: { message: @track.errors.full_messages.first }
+        end
+      end
     end
   end
 
@@ -55,6 +79,12 @@ class TracksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def track_params
-    params.require(:track).permit(:user_id, :tag_id, :activity)
+    params.require(:track).permit(:activity, :tag_id, :started_at, :ended_at)
+  end
+
+  def sanitize_track_params
+    params[:track][:started_at] = Time.zone.now if params[:track][:started_at].blank?
+
+    track_params
   end
 end

@@ -5,6 +5,14 @@ class Track < ApplicationRecord
   belongs_to :tag
 
   scope :countdown, -> { find_by(is_countdown: true) }
+
+  validates :started_at, presence: true
+  validates :activity, presence: true
+
+  # use for grouping tracks
+  def date_started
+    started_at.strftime('%m-%d-%Y')
+  end
 end
 
 # == Schema Information

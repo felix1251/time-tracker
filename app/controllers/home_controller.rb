@@ -5,5 +5,7 @@ class HomeController < ApplicationController
 
   def index
     @tracks = current_user.tracks.order(started_at: :asc).complete
+    @countdown = current_user.tracks.countdown.first
+    @user_tags = current_user.tags
   end
 end

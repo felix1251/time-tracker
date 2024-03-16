@@ -28,7 +28,7 @@ class TracksController < ApplicationController
         format.html { redirect_to track_url(@track), notice: 'Track was successfully created.' }
         format.turbo_stream do
           is_countdown = @track.ended_at.blank?
-          message = is_countdown ? 'Successfully stopped' : 'Successfully created'
+          message = is_countdown ? 'Successfully started' : 'Successfully created'
           render :success, locals: { track: @track, message: }
         end
       else
@@ -40,26 +40,19 @@ class TracksController < ApplicationController
     end
   end
 
-  def stop_countdown
+  # PATCH/PUT /tracks/1 or /tracks/1.json
+  def update
     respond_to do |format|
-      if @track.update(ended_at: Time.zone.now)
+      if @track.update(sanitize_track_params)
+        message = @is_stopped ? 'Successfully stopped' : 'Successfully updated'
         format.turbo_stream do
-          render :success, locals: { track: Track.new, message: 'Successfully stopped' }
+          render :success, locals: { track: Track.new, message: }
         end
       else
         format.turbo_stream do
           render :error, locals: { message: @track.errors.full_messages.first }
         end
       end
-    end
-  end
-
-  # PATCH/PUT /tracks/1 or /tracks/1.json
-  def update
-    if @track.update(track_params)
-      redirect_to track_url(@track), notice: 'Track was successfully updated.'
-    else
-      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -84,6 +77,11 @@ class TracksController < ApplicationController
 
   def sanitize_track_params
     params[:track][:started_at] = Time.zone.now if params[:track][:started_at].blank?
+
+    if action_name == 'update' && params[:track][:ended_at].blank?
+      @is_stopped = true
+      params[:track][:ended_at] = Time.zone.now
+    end
 
     track_params
   end

@@ -7,6 +7,7 @@ module ApplicationHelper
     diff = time2 - time1
     hours, diff = diff.divmod(3600)
     mins,  diff = diff.divmod(60)
-    { hours:, mins:, seconds: diff.to_i }
+
+    "#{format('%02d', hours.to_i)}:#{format('%02d', mins.to_i)}:#{format('%02d', diff.to_i)}"
   end
 end

@@ -4,11 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users, path: "/"
 
-  resources :tracks do
-    collection do
-      patch "/:id/stop_countdown", action: :stop_countdown, as: "stop_countdown"
-    end
-  end
+  resources :tracks
 end
 
 # == Route Map

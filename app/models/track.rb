@@ -5,6 +5,7 @@ class Track < ApplicationRecord
   belongs_to :tag
 
   scope :complete, -> { where.not(ended_at: nil) }
+  scope :countdown, -> { where(ended_at: nil) }
 
   validates :started_at, presence: true
   validates :activity, presence: true

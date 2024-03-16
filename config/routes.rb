@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'tags/index'
+  get 'tags/create'
+  get 'tags/update'
+  get 'tags/destroy'
   # Defines the root path route ("/")
   root "home#index"
 

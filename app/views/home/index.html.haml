@@ -1,12 +1,16 @@
 - groups = @tracks.map.group_by(&:date_started)
 - track = (@countdown.present? ? @countdown : Track.new)
 
-.margin-max-screen.py-8.grid.relative
+.margin-max-screen.py-8.grid.gap-3.relative
   .flex.p-4.bg-white.border.rounded.shadow.sticky.top-8{class: "pb-3.5"}
     = render TrackTimerFormComponent.new track: track, tags: @user_tags
-  #just_created
-  #just_updated
-  .flex.flex-col.gap-5.mt-8
+  .grid.gap-1
+    #created-title
+    #just-created
+  .grid.gap-1
+    #updated-title
+    #just-updated
+  .flex.flex-col.gap-5
     - groups.map do |group|
       .flex.flex-col{id: group[0]}
         .px-4.py-2.text-primary.flex.justify-between{class: "bg-primary/10" }

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users, path: "/"
 
-  resources :tracks
+  resources :tracks, only: %i[update create]
 end
 
 # == Route Map
@@ -26,7 +26,6 @@ end
 #                                          PUT    /                                                                                                 devise/registrations#update
 #                                          DELETE /                                                                                                 devise/registrations#destroy
 #                                          POST   /                                                                                                 devise/registrations#create
-#                    stop_countdown_tracks PATCH  /tracks/:id/stop_countdown(.:format)                                                              tracks#stop_countdown
 #                                   tracks GET    /tracks(.:format)                                                                                 tracks#index
 #                                          POST   /tracks(.:format)                                                                                 tracks#create
 #                                new_track GET    /tracks/new(.:format)                                                                             tracks#new

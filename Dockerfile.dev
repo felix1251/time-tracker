@@ -1,11 +1,11 @@
 FROM ruby:3.2.2-slim-bookworm
 
 RUN apt update -qq && apt upgrade -y && apt-get install -y \
-      build-essential \
-      shared-mime-info \
-      curl \
-      libpq-dev \
-      libvips
+    build-essential \
+    shared-mime-info \
+    curl \
+    libpq-dev \
+    libvips
 
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
     apt-get install -y nodejs && \

@@ -13,7 +13,7 @@
   }
 
   #notification-container {
-    @apply absolute z-[9999] top-6 right-7;
+    @apply absolute z-[9999] bottom-6 right-7;
   }
 }
 

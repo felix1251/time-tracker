@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :tracks, only: %i[update create destroy]
   resources :reports, only: :index
+  resources :tags, only: %i[index update create destroy]
 end
 
 # == Route Map

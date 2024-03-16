@@ -14,7 +14,8 @@ class Track < ApplicationRecord
 
   validates :started_at, comparison: { less_than_or_equal_to: :ended_at }, if: :ended_at
 
-  before_save :capture_total_hour, if: :ended_at
+  # capture total time for easier query of total time using group_by
+  before_save :capture_total_time, if: :ended_at
 
   def countdown?
     ended_at.blank?
@@ -27,7 +28,7 @@ class Track < ApplicationRecord
 
   private
 
-  def capture_total_hour
+  def capture_total_time
     self.total_seconds = ended_at.to_i - started_at.to_i
   end
 end

@@ -3,8 +3,8 @@
     .px-8.py-5.bg-white.rounded.flex.flex-col.gap-2.shadow.border
       %h1.text-zinc-600 Total hours spent
       %span.font-medium.text-xl
-        = seconds_to_hms(current_user.tracks.sum(:total_seconds))
+        = seconds_to_hms(current_user.tracks.complete.sum(:total_seconds))
     .px-8.py-5.bg-white.rounded.flex.flex-col.gap-2.shadow.border
       %h1.text-zinc-600 Total tracks
       %span.font-medium.text-xl
-        = current_user.tracks.count
+        = current_user.tracks.complete.count

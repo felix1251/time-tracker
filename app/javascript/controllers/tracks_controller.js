@@ -10,6 +10,7 @@ export default class extends Controller {
     // Create an observer instance
     const observer = new MutationObserver(() => this.calculate());
 
+    // detect if chiild element is changing 
     observer.observe(this.element, { childList: true });
   }
 
@@ -17,6 +18,7 @@ export default class extends Controller {
     if(this.itemTargets.length == 0){
       this.element.remove()
       return;
+      // remove element if no chuld element
     }
 
     this.totalSeconds = 0

@@ -17,6 +17,7 @@ module TimeTracker
     # in config/environments, which are processed later.
     #
     config.time_zone = 'Singapore'
+    config.active_record.default_timezone = :local
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end

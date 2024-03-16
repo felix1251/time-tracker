@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TracksController < ApplicationController
-  before_action :set_track, only: %i[show edit update destroy stop_countdown]
+  before_action :set_track, only: %i[show edit update destroy]
 
   # GET /tracks or /tracks.json
   def index
@@ -27,7 +27,7 @@ class TracksController < ApplicationController
       if @track.save
         format.html { redirect_to track_url(@track), notice: 'Track was successfully created.' }
         format.turbo_stream do
-          is_countdown = @track.ended_at.blank?
+          is_countdown = @track.countdown?
           message = is_countdown ? 'Successfully started' : 'Successfully created'
           render :success, locals: { track: @track, message: }
         end
@@ -46,7 +46,7 @@ class TracksController < ApplicationController
       if @track.update(sanitize_track_params)
         message = @is_stopped ? 'Successfully stopped' : 'Successfully updated'
         format.turbo_stream do
-          render :success, locals: { track: Track.new, message: }
+          render :success, locals: { track: Track.new, message:, from: sanitize_track_params[:from] }
         end
       else
         format.turbo_stream do
@@ -72,11 +72,11 @@ class TracksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def track_params
-    params.require(:track).permit(:activity, :tag_id, :started_at, :ended_at)
+    params.require(:track).permit(:activity, :tag_id, :started_at, :ended_at, :from)
   end
 
   def sanitize_track_params
-    params[:track][:started_at] = Time.zone.now if params[:track][:started_at].blank?
+    params[:track][:started_at] = Time.zone.now if action_name == 'create' && params[:track][:started_at].blank?
 
     if action_name == 'update' && params[:track][:ended_at].blank?
       @is_stopped = true

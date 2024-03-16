@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Track < ApplicationRecord
+  attr_accessor :from
+
   belongs_to :user
   belongs_to :tag
 
@@ -10,7 +12,9 @@ class Track < ApplicationRecord
   validates :started_at, presence: true
   validates :activity, presence: true
 
-  def counting?
+  validates :started_at, comparison: { less_than_or_equal_to: :ended_at }, if: :ended_at
+
+  def countdown?
     ended_at.blank?
   end
 

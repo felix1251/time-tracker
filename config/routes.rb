@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, path: "/"
 
   resources :tracks, only: %i[update create destroy]
+  resources :reports, only: :index
 end
 
 # == Route Map

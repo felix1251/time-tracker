@@ -3,7 +3,10 @@
 
 .margin-max-screen.py-8.grid.gap-3.relative
   .flex.p-4.bg-white.border.rounded.shadow.sticky.top-8{class: "pb-3.5"}
-    = render TrackTimerFormComponent.new track: track, tags: @user_tags
+    - if params[:mode] == 'timer'
+      = render TrackTimerFormComponent.new track: track, tags: @user_tags
+    - else 
+      = render ManualTimerComponent.new tags: @user_tags
   .grid.gap-1
     #created-title
     #just-created
@@ -19,7 +22,9 @@
               Today
             - else
               = group[0]
-          .px-3.text-xl.font-medium.text-secondary.text-nowrap.w-40.text-center{data: { tracks_target: "total" }}
-            00:00:00
+          .flex.items-center.gap-2
+            %span.text-sm.text-zinc-500 Total:
+            .text-xl.font-medium.text-secondary.text-nowrap.text-center{data: { tracks_target: "total" }}
+              00:00:00
         - group[1].each do |track|
           = render TrackComponent.new track:, tags: @user_tags, from: group[0]

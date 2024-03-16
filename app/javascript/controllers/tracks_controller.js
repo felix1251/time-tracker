@@ -25,16 +25,17 @@ export default class extends Controller {
       this.totalSeconds += Number(element.dataset.seconds)
     });
 
-    const secondsPerDay = 86400;
     const secondsPerHour = 3600;
     const secondsPerMinute = 60;
 
     const hours = Math.floor(
-      (this.totalSeconds % secondsPerDay) / secondsPerHour
+      this.totalSeconds / secondsPerHour
     );
+
     const minutes = Math.floor(
       (this.totalSeconds % secondsPerHour) / secondsPerMinute
     );
+
     const seconds = Math.floor(this.totalSeconds % secondsPerMinute);
 
     this.totalTarget.innerHTML = `${this.leadByZero(hours)}:${this.leadByZero(minutes)}:${this.leadByZero(seconds)}`;

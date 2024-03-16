@@ -10,12 +10,11 @@ export default class extends Controller {
   }
 
   countdown() {
-    const secondsPerDay = 86400;
     const secondsPerHour = 3600;
     const secondsPerMinute = 60;
 
     const hours = Math.floor(
-      (this.secondsUntilEndTime % secondsPerDay) / secondsPerHour
+      this.secondsUntilEndTime / secondsPerHour
     );
     const minutes = Math.floor(
       (this.secondsUntilEndTime % secondsPerHour) / secondsPerMinute

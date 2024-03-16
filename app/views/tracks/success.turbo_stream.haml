@@ -7,6 +7,15 @@
   = turbo_stream.replace "track-timer" do
     = render TrackTimerFormComponent.new track:, tags:
 
+- if action_name == "create" && track.ended_at.present?
+  = turbo_stream.replace "track-timer" do
+    = render ManualTimerComponent.new tags:
+  = turbo_stream.replace "created-title" do
+    %span.text-green-500
+      Just created
+  = turbo_stream.prepend "just-created" do
+    = render TrackComponent.new track:, tags:, from: nil
+
 - if action_name == "update" && track.ended_at.present? && from.nil?
   = turbo_stream.replace "track-timer" do
     = render TrackTimerFormComponent.new track: Track.new, tags:

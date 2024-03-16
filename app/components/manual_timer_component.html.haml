@@ -1,0 +1,11 @@
+= form_for Track.new, html: { id: "track-timer", class: "w-full"} do |f|
+  .flex.divide-x.gap-3
+    .field
+      = f.text_field :activity, placeholder: "What are you working on?", autofocus: false, required: true
+    .field
+      = f.select :tag_id, options_for_select(tags.map{|tag| [tag.name, tag.id]}), {selected: current_user.tracks.last&.tag_id, prompt: "-- Select Tag --" }, required: true
+    .field
+      = f.datetime_field :started_at, data: { action: 'autosave#save' }, required: true
+    .field
+      = f.datetime_field :ended_at, data: { action: 'autosave#save' }, required: true
+    = f.submit "Add", class: "btn-primary uppercase text-sm disabled:bg-gray-200 disabled:cursor-progress "

@@ -11,7 +11,7 @@
         = f.datetime_field :ended_at, data: { action: 'autosave#save' }
       = f.hidden_field :from, value: from
       .px-3.text-xl.font-medium.text-secondary.text-nowrap.w-40.text-center
-        = time_diff(track.started_at, track.ended_at)
+        = seconds_to_hms(track.total_seconds)
   .flex.items-center.justify-center.pr-10
     = button_to track, method: :delete, class: "text-zinc-500 hover:text-red-500 w-fit" do
       = icon "fa-solid", "trash"

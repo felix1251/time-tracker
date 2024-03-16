@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users, path: "/"
 
-  resources :tracks, only: %i[update create]
+  resources :tracks, only: %i[update create destroy]
 end
 
 # == Route Map

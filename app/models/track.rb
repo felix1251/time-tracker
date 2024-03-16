@@ -20,7 +20,7 @@ class Track < ApplicationRecord
 
   # use for grouping tracks
   def date_started
-    started_at.strftime('%m-%d-%Y')
+    started_at.strftime('%d/%m/%Y')
   end
 end
 

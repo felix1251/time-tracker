@@ -6,6 +6,8 @@ export default class extends Controller {
 
   connect() {
     this.secondsUntilEndTime = Number(this.countdownTarget.dataset.secondsUntilEndTime)
+
+    // update coundown every one second
     this.countdown = setInterval(this.countdown.bind(this), 1000);
   }
 

@@ -10,6 +10,7 @@ export default class extends Controller {
     // Create an observer instance
     const observer = new MutationObserver(() => this.calculate());
 
+    // detect if chiild element is changing 
     observer.observe(this.element, { childList: true });
   }
 

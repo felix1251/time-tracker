@@ -12,9 +12,13 @@
     #just-updated
   .flex.flex-col.gap-5
     - groups.map do |group|
-      .flex.flex-col{id: group[0]}
+      .flex.flex-col.divide-y{id: group[0]}
         .px-4.py-2.text-primary.flex.justify-between{class: "bg-primary/10" }
-          .font-medium=group[0]
+          .font-medium
+            - if group[0].to_date.today?
+              Today
+            - else
+              = group[0]
           %div.flex.gap-1.items-center
             %span.text-zinc-500 total:
             %span.text-xl.font-medium.text-secondary 00:00:00

@@ -1,0 +1,4 @@
+= turbo_stream.remove @track
+
+= turbo_stream.prepend "notification-container" do
+  = render NotificationComponent.new notif_type: "success", message: "Track successfully removed"

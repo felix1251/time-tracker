@@ -59,9 +59,13 @@ class TracksController < ApplicationController
 
   # DELETE /tracks/1 or /tracks/1.json
   def destroy
-    @track.destroy
+    respond_to do |format|
+      @track.destroy
 
-    redirect_to tracks_url, notice: 'Track was successfully destroyed.'
+      format.turbo_stream do
+        render :removed
+      end
+    end
   end
 
   private

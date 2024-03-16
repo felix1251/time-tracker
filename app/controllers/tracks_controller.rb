@@ -29,7 +29,7 @@ class TracksController < ApplicationController
         format.turbo_stream do
           is_countdown = @track.countdown?
           message = is_countdown ? 'Successfully started' : 'Successfully created'
-          render :success, locals: { track: @track, message: , from: nil}
+          render :success, locals: { track: @track, message:, from: nil }
         end
       else
         format.html { render :new, status: :unprocessable_entity }

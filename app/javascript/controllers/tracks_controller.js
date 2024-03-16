@@ -18,6 +18,7 @@ export default class extends Controller {
     if(this.itemTargets.length == 0){
       this.element.remove()
       return;
+      // exit if no chuld element
     }
 
     this.totalSeconds = 0

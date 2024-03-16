@@ -12,14 +12,15 @@ end
 #
 # Table name: tracks
 #
-#  id         :bigint           not null, primary key
-#  activity   :string           not null
-#  ended_at   :datetime
-#  started_at :datetime         not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  tag_id     :bigint           not null
-#  user_id    :bigint           not null
+#  id            :bigint           not null, primary key
+#  activity      :string           not null
+#  ended_at      :datetime
+#  started_at    :datetime         not null
+#  total_seconds :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  tag_id        :bigint           not null
+#  user_id       :bigint           not null
 #
 # Indexes
 #

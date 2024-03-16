@@ -1,4 +1,4 @@
-.w-full.bg-white.flex.gap-2.shadow{id: dom_id(track)}
+.w-full.bg-white.flex.gap-2.shadow{id: dom_id(track), data: { tracks_target: "item", seconds: track.total_seconds}}
   = form_for track, html: { data: { controller: 'autosave' }, class: "w-full"  } do |f|
     .flex.gap-4.w-full.items-center{class: "px-4 p-2.5"}
       .field.w-full

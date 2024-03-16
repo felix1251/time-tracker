@@ -1,13 +1,13 @@
-= form_for track, html: {class: "divide-y shadow w-full" } do |f|
+= form_for track, html: { id: dom_id(track), data: { controller: 'autosave' }, class: "divide-y shadow w-full" } do |f|
   .flex.gap-4.w-full.bg-white.divide-gray-800.items-center{class: "px-4 p-2.5"}
     .field.w-full
-      = f.text_field :activity, required: true, class: "w-full"
+      = f.text_field :activity, required: true, class: "w-full", data: { action: 'focusout->autosave#save' }
     .field.w-fit
-      = f.select :tag_id, options_for_select(tags.map{|tag| [tag.name, tag.id]}), {}, {class: "w-60"}
+      = f.select :tag_id, options_for_select(tags.map{|tag| [tag.name, tag.id]}), {}, {class: "w-60", data: { action: 'autosave#save' }}
     .field.w-64
-      = f.datetime_field :started_at, required: true
+      = f.datetime_field :started_at, data: { action: 'autosave#save' }
     .field.w-64
-      = f.datetime_field :ended_at, required: true
+      = f.datetime_field :ended_at, data: { action: 'autosave#save' }
     = f.hidden_field :from, value: from
     .px-3.text-xl.font-medium.text-secondary.text-nowrap.w-40.text-center
       = time_diff(track.started_at, track.ended_at)

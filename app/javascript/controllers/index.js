@@ -2,10 +2,10 @@
 
 import { application } from "controllers/application";
 import Notification from "stimulus-notification";
-// import Autosave from "stimulus-rails-autosave";
+import Autosave from "stimulus-rails-autosave";
 
 application.register("notification", Notification);
-// application.register("autosave", Autosave);
+application.register("autosave", Autosave);
 
 // Eager load all controllers defined in the import map under controllers/**/*_controller
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading";

@@ -3,8 +3,29 @@
 
 - tags = current_user.tags
 
-= turbo_stream.replace "track-timer" do
-  = render TrackTimerFormComponent.new track:, tags:
+- if action_name == "create" && track.ended_at.blank?
+  = turbo_stream.replace "track-timer" do
+    = render TrackTimerFormComponent.new track:, tags:
 
--# = turbo_stream.prepend "just_created" do
--#   = render TrackComponent.new track:, tags:, from: nil
+- if action_name == "update" && track.ended_at.present? && from.nil?
+  = turbo_stream.replace "track-timer" do
+    = render TrackTimerFormComponent.new track: Track.new, tags:
+  = turbo_stream.replace "created-title" do
+    %span.text-green-500
+      Just created
+  = turbo_stream.prepend "just-created" do
+    = render TrackComponent.new track:, tags:, from: nil
+
+- if action_name == "update" && track.ended_at.present? && from.present?
+  - if track.date_started == from
+    = turbo_stream.replace track do
+      = render TrackComponent.new track:, tags:, from: from
+  - else
+    = turbo_stream.replace "track-timer" do
+      = render TrackTimerFormComponent.new track: Track.new, tags:
+    = turbo_stream.remove track
+    = turbo_stream.replace "updated-title" do
+      %span.text-yellow-500
+        Just updated
+    = turbo_stream.prepend "just-updated" do
+      = render TrackComponent.new track:, tags:, from: nil

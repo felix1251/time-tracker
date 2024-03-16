@@ -21,21 +21,38 @@ class TracksController < ApplicationController
 
   # POST /tracks or /tracks.json
   def create
-    @track = Track.new(track_params)
+    @track = current_user.tracks.new(sanitize_track_params)
 
-    if @track.save
-      redirect_to track_url(@track), notice: 'Track was successfully created.'
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @track.save
+        format.html { redirect_to track_url(@track), notice: 'Track was successfully created.' }
+        format.turbo_stream do
+          is_countdown = @track.countdown?
+          message = is_countdown ? 'Successfully started' : 'Successfully created'
+          render :success, locals: { track: @track, message: }
+        end
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream do
+          render :error, locals: { message: @track.errors.full_messages.first }
+        end
+      end
     end
   end
 
   # PATCH/PUT /tracks/1 or /tracks/1.json
   def update
-    if @track.update(track_params)
-      redirect_to track_url(@track), notice: 'Track was successfully updated.'
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @track.update(sanitize_track_params)
+        message = @is_stopped ? 'Successfully stopped' : 'Successfully updated'
+        format.turbo_stream do
+          render :success, locals: { track: Track.new, message:, from: sanitize_track_params[:from] }
+        end
+      else
+        format.turbo_stream do
+          render :error, locals: { message: @track.errors.full_messages.first }
+        end
+      end
     end
   end
 
@@ -55,6 +72,17 @@ class TracksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def track_params
-    params.require(:track).permit(:user_id, :tag_id, :activity)
+    params.require(:track).permit(:activity, :tag_id, :started_at, :ended_at, :from)
+  end
+
+  def sanitize_track_params
+    params[:track][:started_at] = Time.zone.now if action_name == 'create' && params[:track][:started_at].blank?
+
+    if action_name == 'update' && params[:track][:ended_at].blank?
+      @is_stopped = true
+      params[:track][:ended_at] = Time.zone.now
+    end
+
+    track_params
   end
 end

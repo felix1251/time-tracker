@@ -19,15 +19,15 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-primary py-2.5 px-6 rounded text-white w-fit hover:shadow-md transition-all ease-in-out duration-100;
+    @apply bg-primary py-2.5 px-6 rounded text-white w-fit hover:shadow-md transition-all ease-in-out duration-100 cursor-pointer;
   }
 
   .btn-plain {
-    @apply border border-secondary bg-white py-2.5 px-6 rounded w-fit hover:shadow-md transition-all ease-in-out duration-100;
+    @apply border border-secondary bg-white py-2.5 px-6 rounded w-fit hover:shadow-md transition-all ease-in-out duration-100 cursor-pointer;
   }
 
   .btn-countdown {
-    @apply bg-red-500 py-2.5 px-6 rounded text-white w-fit hover:shadow-md transition-all ease-in-out duration-100;
+    @apply bg-red-500 py-2.5 px-6 rounded text-white w-fit hover:shadow-md transition-all ease-in-out duration-100 cursor-pointer;
   }
 
   .input-primary {

@@ -1,22 +1,16 @@
 Rails.application.routes.draw do
-  resources :tracks
-  devise_for :users, path: "/"
-
   # Defines the root path route ("/")
   root "home#index"
+
+  devise_for :users, path: "/"
+
+  resources :tracks
 end
 
 # == Route Map
 #
 #                                   Prefix Verb   URI Pattern                                                                                       Controller#Action
-#                                   tracks GET    /tracks(.:format)                                                                                 tracks#index
-#                                          POST   /tracks(.:format)                                                                                 tracks#create
-#                                new_track GET    /tracks/new(.:format)                                                                             tracks#new
-#                               edit_track GET    /tracks/:id/edit(.:format)                                                                        tracks#edit
-#                                    track GET    /tracks/:id(.:format)                                                                             tracks#show
-#                                          PATCH  /tracks/:id(.:format)                                                                             tracks#update
-#                                          PUT    /tracks/:id(.:format)                                                                             tracks#update
-#                                          DELETE /tracks/:id(.:format)                                                                             tracks#destroy
+#                                     root GET    /                                                                                                 home#index
 #                         new_user_session GET    /sign_in(.:format)                                                                                devise/sessions#new
 #                             user_session POST   /sign_in(.:format)                                                                                devise/sessions#create
 #                     destroy_user_session DELETE /sign_out(.:format)                                                                               devise/sessions#destroy
@@ -32,7 +26,15 @@ end
 #                                          PUT    /                                                                                                 devise/registrations#update
 #                                          DELETE /                                                                                                 devise/registrations#destroy
 #                                          POST   /                                                                                                 devise/registrations#create
-#                                     root GET    /                                                                                                 home#index
+#                    stop_countdown_tracks PATCH  /tracks/:id/stop_countdown(.:format)                                                              tracks#stop_countdown
+#                                   tracks GET    /tracks(.:format)                                                                                 tracks#index
+#                                          POST   /tracks(.:format)                                                                                 tracks#create
+#                                new_track GET    /tracks/new(.:format)                                                                             tracks#new
+#                               edit_track GET    /tracks/:id/edit(.:format)                                                                        tracks#edit
+#                                    track GET    /tracks/:id(.:format)                                                                             tracks#show
+#                                          PATCH  /tracks/:id(.:format)                                                                             tracks#update
+#                                          PUT    /tracks/:id(.:format)                                                                             tracks#update
+#                                          DELETE /tracks/:id(.:format)                                                                             tracks#destroy
 #         turbo_recede_historical_location GET    /recede_historical_location(.:format)                                                             turbo/native/navigation#recede
 #         turbo_resume_historical_location GET    /resume_historical_location(.:format)                                                             turbo/native/navigation#resume
 #        turbo_refresh_historical_location GET    /refresh_historical_location(.:format)                                                            turbo/native/navigation#refresh

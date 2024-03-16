@@ -1,13 +1,22 @@
 # frozen_string_literal: true
 
 class Track < ApplicationRecord
+  attr_accessor :from
+
   belongs_to :user
   belongs_to :tag
 
-  scope :countdown, -> { find_by(is_countdown: true) }
+  scope :complete, -> { where.not(ended_at: nil) }
+  scope :countdown, -> { where(ended_at: nil) }
 
   validates :started_at, presence: true
   validates :activity, presence: true
+
+  validates :started_at, comparison: { less_than_or_equal_to: :ended_at }, if: :ended_at
+
+  def countdown?
+    ended_at.blank?
+  end
 
   # use for grouping tracks
   def date_started
@@ -19,15 +28,14 @@ end
 #
 # Table name: tracks
 #
-#  id           :bigint           not null, primary key
-#  activity     :string           not null
-#  ended_at     :datetime
-#  is_countdown :boolean          default(FALSE), not null
-#  started_at   :datetime         not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  tag_id       :bigint           not null
-#  user_id      :bigint           not null
+#  id         :bigint           not null, primary key
+#  activity   :string           not null
+#  ended_at   :datetime
+#  started_at :datetime         not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  tag_id     :bigint           not null
+#  user_id    :bigint           not null
 #
 # Indexes
 #

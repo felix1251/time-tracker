@@ -1,0 +1,10 @@
+= turbo_stream.prepend "notification-container" do
+  = render NotificationComponent.new notif_type: "success", message: message
+
+- tags = current_user.tags
+
+= turbo_stream.replace "track-timer" do
+  = render TrackTimerFormComponent.new track:, tags:
+
+-# = turbo_stream.prepend "just_created" do
+-#   = render TrackComponent.new track:, tags:, from: nil

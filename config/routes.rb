@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, path: "/"
 
   resources :tracks, only: %i[update create destroy]
+  resources :reports, only: :index
 end
 
 # == Route Map
@@ -26,12 +27,8 @@ end
 #                                          PUT    /                                                                                                 devise/registrations#update
 #                                          DELETE /                                                                                                 devise/registrations#destroy
 #                                          POST   /                                                                                                 devise/registrations#create
-#                                   tracks GET    /tracks(.:format)                                                                                 tracks#index
-#                                          POST   /tracks(.:format)                                                                                 tracks#create
-#                                new_track GET    /tracks/new(.:format)                                                                             tracks#new
-#                               edit_track GET    /tracks/:id/edit(.:format)                                                                        tracks#edit
-#                                    track GET    /tracks/:id(.:format)                                                                             tracks#show
-#                                          PATCH  /tracks/:id(.:format)                                                                             tracks#update
+#                                   tracks POST   /tracks(.:format)                                                                                 tracks#create
+#                                    track PATCH  /tracks/:id(.:format)                                                                             tracks#update
 #                                          PUT    /tracks/:id(.:format)                                                                             tracks#update
 #                                          DELETE /tracks/:id(.:format)                                                                             tracks#destroy
 #         turbo_recede_historical_location GET    /recede_historical_location(.:format)                                                             turbo/native/navigation#recede

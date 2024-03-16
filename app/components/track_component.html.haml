@@ -1,4 +1,4 @@
-.w-full.bg-white.flex.gap-2.shadow{id: dom_id(track)}
+.w-full.bg-white.flex.gap-2.shadow{id: dom_id(track), data: { tracks_target: "item", seconds: track.total_seconds}}
   = form_for track, html: { data: { controller: 'autosave' }, class: "w-full"  } do |f|
     .flex.gap-4.w-full.items-center{class: "px-4 p-2.5"}
       .field.w-full
@@ -11,7 +11,7 @@
         = f.datetime_field :ended_at, data: { action: 'autosave#save' }
       = f.hidden_field :from, value: from
       .px-3.text-xl.font-medium.text-secondary.text-nowrap.w-40.text-center
-        = time_diff(track.started_at, track.ended_at)
+        = seconds_to_hms(track.total_seconds)
   .flex.items-center.justify-center.pr-10
     = button_to track, method: :delete, class: "text-zinc-500 hover:text-red-500 w-fit" do
       = icon "fa-solid", "trash"

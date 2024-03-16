@@ -4,7 +4,9 @@
       = icon "fa-solid", "clock"
       Time Tracker
     .flex.flex-col.mt-2
-      felix
+      = render SidebarItemComponent.new path: root_path, name: "Manual", fa_icon: "keyboard"
+      = render SidebarItemComponent.new path: root_path(mode: "timer"), name: "Timer", fa_icon: "clock-rotate-left"
+      = render SidebarItemComponent.new path: reports_path, name: "Reports", fa_icon: "file"
   .py-4.px-4.grid.gap-2.sticky.bottom-0.bg-white.z-10
     %span.truncate.flex.items-center.gap-2
       = icon "fa-solid", "user"

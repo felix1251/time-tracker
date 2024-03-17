@@ -32,6 +32,12 @@ end
 #                                    track PATCH  /tracks/:id(.:format)                                                                             tracks#update
 #                                          PUT    /tracks/:id(.:format)                                                                             tracks#update
 #                                          DELETE /tracks/:id(.:format)                                                                             tracks#destroy
+#                                  reports GET    /reports(.:format)                                                                                reports#index
+#                                     tags GET    /tags(.:format)                                                                                   tags#index
+#                                          POST   /tags(.:format)                                                                                   tags#create
+#                                      tag PATCH  /tags/:id(.:format)                                                                               tags#update
+#                                          PUT    /tags/:id(.:format)                                                                               tags#update
+#                                          DELETE /tags/:id(.:format)                                                                               tags#destroy
 #         turbo_recede_historical_location GET    /recede_historical_location(.:format)                                                             turbo/native/navigation#recede
 #         turbo_resume_historical_location GET    /resume_historical_location(.:format)                                                             turbo/native/navigation#resume
 #        turbo_refresh_historical_location GET    /refresh_historical_location(.:format)                                                            turbo/native/navigation#refresh

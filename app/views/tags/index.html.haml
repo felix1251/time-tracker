@@ -9,15 +9,20 @@
           %th.px-4.py-2.text-start Updated At
           %th.px-4.py-2.text-center Action
       %tbody.divide-y
-        - @tags.each do |tag|
+        - if @tags.present?
+          - @tags.each do |tag|
+            %tr
+              %td.px-4.py-3.text-start
+                = form_for tag, html: { data: { controller: 'autosave', method: :put } }  do |f|
+                  .field
+                    = f.text_field :name, data: { action: 'focusout->autosave#save' }
+              %td.px-4.py-3.text-start=tag.created_at
+              %td.px-4.py-3.text-start=tag.updated_at
+              %div
+                %td.px-4.py-3.text-center
+                  = button_to tag, method: :delete, class: "text-gray-500 hover:text-red-500"  do
+                    = icon "fa-solid", "trash"
+        - else
           %tr
             %td.px-4.py-3.text-start
-              = form_for tag, html: { data: { controller: 'autosave', method: :put } }  do |f|
-                .field
-                  = f.text_field :name, data: { action: 'focusout->autosave#save' }
-            %td.px-4.py-3.text-start=tag.created_at
-            %td.px-4.py-3.text-start=tag.updated_at
-            %div
-              %td.px-4.py-3.text-center
-                = button_to tag, method: :delete, class: "text-gray-500 hover:text-red-500"  do
-                  = icon "fa-solid", "trash"
+              No tags found

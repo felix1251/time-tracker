@@ -25,7 +25,7 @@ docker compose -f docker-compose.dev.yml up -d
 > We control all the commands inside our time_tracker_container.
 > All logic or changes will reflect in our project directory because volume are shared between our container
 
-Local server port (this is served from our docker container)
+Local server (this is served from our docker container)
 
 ```
 http://127.0.0.1:3000/

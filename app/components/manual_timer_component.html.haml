@@ -3,7 +3,7 @@
     .field
       = f.text_field :activity, placeholder: "What are you working on?", autofocus: false, required: true
     .field
-      = f.select :tag_id, options_for_select(tags.map{|tag| [tag.name, tag.id]}), {selected: current_user.tracks.last&.tag_id, prompt: "-- Select Tag --" }, required: true
+      = f.select :tag_id, options_for_select(tags.map{|tag| [tag.name, tag.id]}), { prompt: "-- Select Tag --" }, required: true
     .field
       = f.datetime_field :started_at, data: { action: 'autosave#save' }, required: true
     .field

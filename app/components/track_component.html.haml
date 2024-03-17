@@ -4,7 +4,7 @@
       .field.w-full
         = f.text_field :activity, required: true, class: "w-full", data: { action: 'focusout->autosave#save' }
       .field.w-fit
-        = f.select :tag_id, options_for_select(tags.map{|tag| [tag.name, tag.id]}), {}, {class: "w-60", data: { action: 'autosave#save' }}
+        = f.select :tag_id, tags.map{|tag| [tag.name, tag.id]}, {}, {class: "w-60", data: { action: 'autosave#save' }}
       .field.w-64
         = f.datetime_field :started_at, data: { action: 'autosave#save' }
       .field.w-64
